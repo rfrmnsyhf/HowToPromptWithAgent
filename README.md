@@ -1,55 +1,51 @@
 # OpenCode Skill Agent Config
 
-Portable configuration guide for setting up **OpenCode CLI agents** with reusable skills, tools, and project-aware model selection.
+Panduan konfigurasi **OpenCode CLI Agent** yang bersifat portable, reusable, dan dapat digunakan di berbagai komputer serta project.
 
-The goal is simple:
+Tujuannya sederhana:
 
-> Drop `CONFIGURE_SKILL_AGENT.md` into a project, let the agent audit the environment, and configure only what is actually needed.
+> Letakkan `CONFIGURE_SKILL_AGENT.md` di dalam project, jalankan OpenCode, lalu biarkan agent melakukan audit environment dan menyiapkan konfigurasi yang memang diperlukan.
 
-No hardcoded API keys.  
-No machine-specific paths.  
-No hardcoded model IDs.  
-No OpenCode-level fallback chains.
-
----
-
-## What is this?
-
-`CONFIGURE_SKILL_AGENT.md` is a portable setup guide for OpenCode-based AI coding agents.
-
-It tells an agent how to:
-
-- Inspect the current environment before making changes
-- Preserve existing OpenCode configuration
-- Install reusable agent skills
-- Configure optional development capabilities
-- Select models based on the models actually available on the current machine
-- Keep PLAN, BUILD, and EXPLORER roles separated
-- Avoid unnecessary dependencies and configuration
-- Protect credentials from being committed to Git
-- Validate the resulting setup before declaring it complete
-
-The configuration is designed to work across different machines instead of assuming that every computer has the same providers, models, paths, or credentials.
+Tidak ada API key yang disimpan.  
+Tidak ada path komputer tertentu.  
+Tidak ada model yang di-hardcode.  
+Tidak ada fallback tambahan di OpenCode.
 
 ---
 
-## Design Principles
+## Apa ini?
 
-### Inspect first, modify second
+`CONFIGURE_SKILL_AGENT.md` adalah panduan setup untuk membantu AI coding agent mengonfigurasi environment OpenCode secara aman dan minimal.
 
-The agent must understand the existing environment and configuration before changing anything.
+Panduan ini mengatur bagaimana agent:
 
-### Smallest diff that works
+- Melakukan audit sebelum mengubah konfigurasi
+- Mempertahankan konfigurasi OpenCode yang sudah bekerja
+- Memasang skill yang diperlukan
+- Memasang capability tambahan sesuai kebutuhan project
+- Memilih model berdasarkan model yang benar-benar tersedia di komputer saat ini
+- Memisahkan role `PLAN`, `BUILD`, dan `EXPLORER`
+- Menghindari dependency dan konfigurasi yang tidak diperlukan
+- Melindungi credential agar tidak masuk Git
+- Melakukan validasi sebelum menyatakan setup selesai
 
-Avoid unnecessary files, dependencies, abstractions, and configuration.
+Panduan ini dibuat agar **tidak bergantung pada komputer pembuatnya**.
 
-If the existing setup already works, don't rebuild it just because humans enjoy touching things that aren't broken.
+Setiap komputer melakukan audit terhadap environment-nya sendiri.
 
-### No hardcoded models
+---
 
-The guide does **not** prescribe a specific model.
+## Prinsip Utama
 
-The agent checks:
+### 1. Audit sebelum mengubah
 
-```powershell
-opencode models
+Agent harus memahami environment dan konfigurasi yang sudah ada sebelum melakukan perubahan.
+
+```text
+Audit
+  ↓
+Pahami konfigurasi
+  ↓
+Tentukan kebutuhan
+  ↓
+Baru melakukan perubahan
